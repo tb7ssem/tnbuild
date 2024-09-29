@@ -1,0 +1,17 @@
+/* Products.css */
+
+.products-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.products-main {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+}
+
+.products-main h1 {
+  margin-bottom: 20px;
+}

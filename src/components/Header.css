@@ -1,0 +1,55 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: #f8f9fa;
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+  }
+
+  .menu-icon {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    color: #000; /* Change icon color to black */
+  }
+
+  .logo img {
+    height: 40px;
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: flex-start; /* Align the links to the left */
+    flex-grow: 1; /* Allow the nav to grow */
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    margin: 0 1rem; /* Add some spacing between links */
+  }
+  
+  .nav-link:hover {
+    color: #007bff;
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+  }
+
+  .heart-icon {
+    font-size: 1.5rem;
+    color: #333;
+    cursor: pointer;
+  }
+
+  .heart-icon:hover {
+    color: #ff0000;
+  }
