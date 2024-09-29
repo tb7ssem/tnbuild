@@ -1,17 +1,18 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import Login from "./components/Login";
 import "./App.css";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
-import Login from "./pages/Login";
 import AdminDashboard from "./pages/AdminDashboard";
 import ProductDetails from "./pages/Productdetails";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
+    <AuthProvider>
       <Router>
         <Header />
         <Routes>
@@ -23,8 +24,8 @@ function App() {
         </Routes>
         <Footer />
       </Router>
-    </div>
+    </AuthProvider>
   );
-}
+};
 
 export default App;

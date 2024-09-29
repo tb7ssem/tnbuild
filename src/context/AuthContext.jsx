@@ -2,33 +2,25 @@ import React, { createContext, useContext, useState } from 'react';
 
 const AuthContext = createContext();
 
-export const useAuth = () => {
-  return useContext(AuthContext);
-  
-};
-
-
 export const AuthProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [user, setUser] = useState(null);
 
   const login = (username, password) => {
-    // Simple authentication logic (replace with real authentication)
-    if (username === 'admin' && password === 'password') {
-      setCurrentUser({ username });
-      return true;
-    }
-    return false;
+    // Simplified login logic
+    setUser({ username });
   };
 
   const logout = () => {
-    setCurrentUser(null);
+    setUser(null);
   };
 
-  const value = {
-    currentUser,
-    login,
-    logout,
-  };
+  return (
+    <AuthContext.Provider value={{ user, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+export const useAuth = () => {
+  return useContext(AuthContext);
 };
