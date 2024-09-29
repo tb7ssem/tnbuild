@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-import './Login.css'; // Ensure this file exists
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Login.css"; // Ensure this file exists
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
-  const { login } = useAuth();
+
+  const checkID = () => {
+    if (username === "admin" && password === "admin") return true;
+    return false;
+  };
 
   const handleLogin = () => {
-    if (login(username, password)) {
-      navigate('/admin-dashboard');
+    if (checkID(username, password)) {
+      navigate("/admin-dashboard");
     } else {
-      setError('Invalid username or password');
+      setError("Invalid username or password");
     }
   };
 
