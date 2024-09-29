@@ -1,24 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-import './AdminDashboard.css'; // Ensure this file exists
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "./AdminDashboard.css"; // Ensure this file exists
 
 const AdminDashboard = () => {
   const [products, setProducts] = useState([]);
-  const [newProduct, setNewProduct] = useState('');
+  const [newProduct, setNewProduct] = useState("");
   const navigate = useNavigate();
-  const { currentUser } = useAuth();
+  const currentUser = "admin"; // TODO change this
 
   useEffect(() => {
     if (!currentUser) {
-      navigate('/login');
+      navigate("/login");
     }
   }, [currentUser, navigate]);
 
   const handleAddProduct = () => {
     if (newProduct.trim()) {
       setProducts([...products, newProduct]);
-      setNewProduct('');
+      setNewProduct("");
     }
   };
 
