@@ -57,3 +57,38 @@ html, body {
 .App-header {
     flex: 1; /* Allow header to grow and take available space */
 }
+
+.app {
+    text-align: center;
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #282c34;
+    color: white;
+}
+
+.app-header h1 {
+    margin: 0;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+}
+
+.login-button {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #61dafb;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.login-button:hover {
+    background-color: #21a1f1;
+}

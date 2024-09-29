@@ -36,6 +36,7 @@ const Header = () => {
         </nav>
       </div>
       <div className="header-right">
+        <Link to="/login" className="login-button">Login</Link>
         <FontAwesomeIcon icon={faHeart} className="heart-icon" />
       </div>
     </header>
