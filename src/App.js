@@ -8,6 +8,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import ProductDetails from "./pages/Productdetails";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import CMS from "./pages/cms";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/cms" element={<CMS />} />
         </Routes>
         <Footer />
       </Router>
