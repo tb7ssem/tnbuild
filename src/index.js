@@ -1,10 +1,13 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import { createRoot } from "react-dom/client";
 import App from "./App";
+import { ProductProvider } from "./context/ProductContext";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const container = document.getElementById("root");
+const root = createRoot(container);
+
 root.render(
-  <React.StrictMode>
+  <ProductProvider>
     <App />
-  </React.StrictMode>
+  </ProductProvider>
 );

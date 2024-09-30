@@ -1,13 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import "./AdminDashboard.css";  // Ensure this file exists
-import CMS from "./cms";
+import { ProductContext } from "../context/ProductContext";
 
 const AdminDashboard = () => {
-  const [products, setProducts] = useState([]);
-  const [newProduct, setNewProduct] = useState("");
+  const [newProduct, setNewProduct] = useState({
+    name: "",
+    image: null,
+    price: "",
+    description: ""
+  });
   const navigate = useNavigate();
   const currentUser = "admin"; // TODO change this
+  const { products, addProduct } = useContext(ProductContext);
 
   useEffect(() => {
     if (!currentUser) {
@@ -16,16 +23,35 @@ const AdminDashboard = () => {
   }, [currentUser, navigate]);
 
   const handleAddProduct = () => {
-    if (newProduct.trim()) {
-      setProducts([...products, newProduct]);
-      setNewProduct("");
+    if (newProduct.name.trim()) {
+      addProduct(newProduct);
+      setNewProduct({ name: "", image: null, price: "", description: "" });
+      console.log("Product added from AdminDashboard:", newProduct);
     }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setNewProduct((prevProduct) => ({
+      ...prevProduct,
+      [name]: value
+    }));
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setNewProduct((prevProduct) => ({
+      ...prevProduct,
+      image: file
+    }));
   };
 
   return (
     <>
       <div className="admin-dashboard">
-        <h1>Admin Dashboard</h1>
+        <h1>
+          <FontAwesomeIcon icon={faCartShopping} /> Admin Dashboard
+        </h1>
         <Link to="/cms">
           <button className="cms-button">Go to CMS</button>
         </Link>
@@ -35,14 +61,45 @@ const AdminDashboard = () => {
             <div className="product-management">
               <input
                 type="text"
-                value={newProduct}
-                onChange={(e) => setNewProduct(e.target.value)}
+                name="name"
+                value={newProduct.name}
+                onChange={handleChange}
                 placeholder="Enter product name"
+              />
+              <input
+                type="file"
+                name="image"
+                onChange={handleFileChange}
+                placeholder="Upload product image"
+              />
+              <input
+                type="text"
+                name="price"
+                value={newProduct.price}
+                onChange={handleChange}
+                placeholder="Enter product price"
+              />
+              <textarea
+                name="description"
+                value={newProduct.description}
+                onChange={handleChange}
+                placeholder="Enter product description"
               />
               <button onClick={handleAddProduct}>Add Product</button>
               <ul>
                 {products.map((product, index) => (
-                  <li key={index}>{product}</li>
+                  <li key={index}>
+                    {product.image && (
+                      <img
+                        src={URL.createObjectURL(product.image)}
+                        alt={product.name}
+                        width="50"
+                      />
+                    )}
+                    <div>{product.name}</div>
+                    <div>{product.price}</div>
+                    <div>{product.description}</div>
+                  </li>
                 ))}
               </ul>
             </div>

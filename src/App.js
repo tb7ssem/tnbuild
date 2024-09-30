@@ -9,6 +9,7 @@ import ProductDetails from "./pages/Productdetails";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CMS from "./pages/cms";
+import ShoppingCart from "./pages/ShoppingCart";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/cms" element={<CMS />} />
+          <Route path="/shoppingcart" element={<ShoppingCart />} />
         </Routes>
         <Footer />
       </Router>

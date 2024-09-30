@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faHeart, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import "./Header.css";
 import logo from "../logo.svg";
 
@@ -30,6 +30,9 @@ const Header = () => {
           Login
         </Link>
         <FontAwesomeIcon icon={faHeart} className="heart-icon" />
+        <Link to="/shoppingcart">
+          <FontAwesomeIcon icon={faCartShopping} beat className="cart-icon" />
+        </Link>
       </div>
     </header>
   );

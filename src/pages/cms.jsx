@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ProductContext } from '../context/ProductContext';
 import './Cms.css';
 
-function CMS() {
+const CMS = () => {
+  const { products } = useContext(ProductContext);
+
   return (
-    <div className="cms-container">
-      <h1 className="cms-header">CMS Page</h1>
-      <div className="cms-content">
-        <p>Welcome to the CMS page. Here you can manage your content.</p>
-      </div>
+    <div className="cms-page">
+      <h1>CMS</h1>
+      <ul>
+        {products.map((product, index) => (
+          <li key={index}>{product}</li>
+        ))}
+      </ul>
     </div>
   );
-}
+};
 
 export default CMS;

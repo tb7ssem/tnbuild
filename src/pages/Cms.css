@@ -14,3 +14,20 @@
     font-size: 16px;
     line-height: 1.5;
 }
+
+.cms-page {
+    padding: 20px;
+}
+
+.cms-page h1 {
+    font-size: 24px;
+}
+
+.cms-page ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cms-page li {
+    padding: 8px 0;
+}
