@@ -1,6 +1,6 @@
 .shopping-cart {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column; /* Changed to column for responsiveness */
   padding: 20px;
   background-color: #f5f5f5;
 }
@@ -11,6 +11,7 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px; /* Added margin for spacing */
 }
 
 .cart-items h2 {
@@ -72,4 +73,14 @@
 
 .cart-summary button:hover {
   background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .shopping-cart {
+    flex-direction: column;
+  }
+
+  .cart-summary {
+    margin-top: 20px;
+  }
 }

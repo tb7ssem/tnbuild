@@ -1,6 +1,7 @@
 .product-item {
     /* Add your existing styles for product-item */
     margin-bottom: 20px;
+    text-align: center; /* Center align for smaller screens */
 }
 
 .product-item img {
@@ -32,4 +33,10 @@
 
 .view-details:hover {
     background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .product-item img {
+        max-width: 100%;
+    }
 }

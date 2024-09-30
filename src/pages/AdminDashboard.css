@@ -17,7 +17,20 @@
   background-color: #f9f9f9;
 }
 
-.cms-button {
+.product-management {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.product-management input,
+.product-management textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.product-management button {
   padding: 10px 20px;
   font-size: 16px;
   background-color: #007bff;
@@ -25,9 +38,47 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-bottom: 20px;
 }
 
-.cms-button:hover {
+.product-management button:hover {
   background-color: #0056b3;
 }
+
+.order-management {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.order-management input {
+  padding: 10px;    
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.order-management button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.order-management button:hover {
+  background-color: #0056b3;  
+}
+
+.user-management {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .dashboard-sections {
+    flex-direction: column;
+  }
+}
+

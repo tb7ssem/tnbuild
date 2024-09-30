@@ -50,11 +50,9 @@ const AdminDashboard = () => {
     <>
       <div className="admin-dashboard">
         <h1>
-          <FontAwesomeIcon icon={faCartShopping} /> Admin Dashboard
+           Admin Dashboard
         </h1>
-        <Link to="/cms">
-          <button className="cms-button">Go to CMS</button>
-        </Link>
+       
         <div className="dashboard-sections">
           <div className="section">
             <h2>Manage Products</h2>
@@ -73,11 +71,12 @@ const AdminDashboard = () => {
                 placeholder="Upload product image"
               />
               <input
-                type="text"
+                type="number"  
                 name="price"
                 value={newProduct.price}
                 onChange={handleChange}
                 placeholder="Enter product price"
+                
               />
               <textarea
                 name="description"
@@ -97,7 +96,7 @@ const AdminDashboard = () => {
                       />
                     )}
                     <div>{product.name}</div>
-                    <div>{product.price}</div>
+                    <div>{product.price} TND</div>  
                     <div>{product.description}</div>
                   </li>
                 ))}
@@ -108,10 +107,7 @@ const AdminDashboard = () => {
             <h2>Manage Orders</h2>
             {/* Add order management functionality */}
           </div>
-          <div className="section">
-            <h2>Manage Customers</h2>
-            {/* Add customer management functionality */}
-          </div>
+         
           <div className="section">
             <h2>Website Settings</h2>
             {/* Add website settings functionality */}

@@ -1,8 +1,8 @@
 .footer {
-  background-color: #f8f9fa;
+  background-color: #282c34;
   padding: 20px;
   text-align: left;
-  
+  color: white;
   bottom: 0;
   width: 100%;
 }
@@ -11,6 +11,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  flex-wrap: wrap; /* Added for responsiveness */
 }
 
 .footer-left {
@@ -40,7 +41,7 @@
 
 .footer-right ul li a {
   text-decoration: none;
-  color: #333;
+  color: white;
 }
 
 .footer-right ul li a:hover {
@@ -52,4 +53,11 @@
   margin-top: 20px;
   border-top: 1px solid #ddd;
   padding-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .footer-left,
+  .footer-right {
+    max-width: 100%;
+  }
 }
