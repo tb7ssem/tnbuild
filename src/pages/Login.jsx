@@ -24,7 +24,7 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     if (checkID(username, password)) {
-      navigate("/admin-dashboard");
+      navigate("/admin");
     } else {
       setError("Invalid username or password");
     }
