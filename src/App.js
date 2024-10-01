@@ -15,17 +15,16 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Header />
+        {window.location.pathname !== "/login" ? <Header /> : null}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/products" element={<Products />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/product/:id" element={<ProductDetails />} />
-
           <Route path="/shoppingcart" element={<ShoppingCart />} />
         </Routes>
-        <Footer />
+        {window.location.pathname !== "/login" ? <Footer /> : null}
       </Router>
     </div>
   );
