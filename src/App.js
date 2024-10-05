@@ -8,8 +8,8 @@ import AdminDashboard from "./pages/AdminDashboard";
 import ProductDetails from "./pages/Productdetails";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-
 import ShoppingCart from "./pages/ShoppingCart";
+import Register from "./pages/Register"; // Import the Register component
 
 function App() {
   return (
@@ -19,6 +19,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />{" "}
+          {/* Add route for Register */}
           <Route path="/products" element={<Products />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/product/:id" element={<ProductDetails />} />
