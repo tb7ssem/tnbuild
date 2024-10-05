@@ -8,10 +8,11 @@ import { ProductContext } from "../context/ProductContext";
 const AdminDashboard = () => {
   const [newProduct, setNewProduct] = useState({
     name: "",
-    image: null,
+    imageUrl: null,
     price: "",
     description: ""
   });
+  const [error, setError] = useState(""); // Initialize error state
   const navigate = useNavigate();
   const currentUser = "admin"; // TODO change this
   const { products, addProduct } = useContext(ProductContext);
@@ -22,13 +23,43 @@ const AdminDashboard = () => {
     }
   }, [currentUser, navigate]);
 
-  const handleAddProduct = () => {
-    if (newProduct.name.trim()) {
-      addProduct(newProduct);
-      setNewProduct({ name: "", image: null, price: "", description: "" });
-      console.log("Product added from AdminDashboard:", newProduct);
+  const handleAddProduct = async () => {
+    const token = localStorage.getItem('authToken'); // Retrieve token from localStorage
+  console.log("TOKEN " + token);
+    if (newProduct.name.trim() && token) {
+      try {
+        const response = await fetch('http://localhost:5000/api/products', {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token, // Include the token in the Authorization header
+          },
+          body: JSON.stringify({
+            name: newProduct.name,
+            price: newProduct.price,
+            description: newProduct.description,
+            imageUrl: newProduct.imageUrl,
+          }),
+        });
+  
+        if (response.ok) {
+          const data = await response.json();
+          console.log("Product added successfully:", data);
+          addProduct(newProduct); // Assuming addProduct updates the state or list of products
+          setNewProduct({ name: "", imageUrl: null, price: "", description: "" }); // Reset the product form
+        } else {
+          const errorData = await response.json();
+          console.error("Failed to add product:", errorData);
+          setError(errorData.message || "Failed to add product");
+        }
+      } catch (err) {
+        console.error("An error occurred while adding the product:", err);
+        setError("An error occurred. Please try again.");
+      }
+    } else {
+      setError("Product name is required and you must be logged in.");
     }
-  };
+   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,6 +79,7 @@ const AdminDashboard = () => {
 
   return (
     <>
+
       <div className="admin-dashboard">
         <h1>
            Admin Dashboard
@@ -66,7 +98,7 @@ const AdminDashboard = () => {
               />
               <input
                 type="file"
-                name="image"
+                name="imageUrl"
                 onChange={handleFileChange}
                 placeholder="Upload product image"
               />
@@ -84,13 +116,14 @@ const AdminDashboard = () => {
                 onChange={handleChange}
                 placeholder="Enter product description"
               />
+             
               <button onClick={handleAddProduct}>Add Product</button>
               <ul>
                 {products.map((product, index) => (
                   <li key={index}>
-                    {product.image && (
+                    {product.imageUrl && (
                       <img
-                        src={URL.createObjectURL(product.image)}
+                        src={URL.createObjectURL(product.imageUrl)}
                         alt={product.name}
                         width="50"
                       />

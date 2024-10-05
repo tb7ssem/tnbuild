@@ -26,8 +26,8 @@ const Login = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username: "admin",
-          password: "adminadmin"
+          username,
+          password
         }),
       });
       const data = await response.json();
@@ -36,6 +36,7 @@ const Login = () => {
         // Handle successful login (e.g., store token, redirect)
         const { token } = data; // Assuming the token is returned in the response
         console.log("Login successful, token:", token);
+        localStorage.setItem('authToken', token); // Store token in localStorage for future use
         navigate("/admin");
       } else {
         setError(data.message || "Login failed"); // Show error message
